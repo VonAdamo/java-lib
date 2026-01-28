@@ -16,13 +16,12 @@ jobs:
         with:
           java-version: "25"
           distribution: "temurin"
-          server-id: "github"
-          settings-path: ${{ github.workspace }}
+          cache: "maven"
       - name: Set project version from tag
         run: |
           CLEAN_VERSION=${GITHUB_REF_NAME#v}
           mvn versions:set -DnewVersion=${CLEAN_VERSION} -DgenerateBackupPoms=false
-      - name: Publish with Magen
+      - name: Publish with Maven
         run: mvn -B deploy
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
