@@ -1,4 +1,4 @@
-package org.example;
+package org.example.calculator;
 
 public class Calculator {
     public static int add(int a, int b) {
@@ -14,5 +14,12 @@ public class Calculator {
             sum += number;
         }
         return sum;
+    }
+
+    public static float div(int a, int b) {
+        if (b == 0) {
+            throw new ArithmeticException("Division by zero is not allowed.");
+        }
+        return (float) a / b;
     }
 }

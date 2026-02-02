@@ -1,4 +1,4 @@
-package org.example;
+package org.example.calculator;
 
 import org.junit.jupiter.api.Test;
 
@@ -28,5 +28,24 @@ class CalculatorTest {
     void noParamsReturnsZero() {
         int result = Calculator.add();
         assertThat(result).isEqualTo(0);
+    }
+
+    @Test
+    void divideTwoNumbersReturnsFloat() {
+        float result = Calculator.div(6, 3);
+        assertThat(result).isEqualTo(2.0f);
+    }
+
+    @Test
+    void divideTwoNumbersReturnsFloatWithRemainder() {
+        float result = Calculator.div(5, 2);
+        assertThat(result).isEqualTo(2.5f);
+    }
+
+    @Test
+    void divideByZeroThrowsException() {
+        assertThrows(ArithmeticException.class, () -> {
+            Calculator.div(1, 0);
+        });
     }
 }
